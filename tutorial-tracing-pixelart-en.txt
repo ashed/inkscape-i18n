@@ -1,0 +1,72 @@
+﻿
+Inkscape tutorial: Tracing Pixel Art
+
+Before we had access to great vector graphics editing software...
+
+Even before we had 640x480 computer displays...
+
+It was common to play video games with carefully crafted pixels in low resolutions displays.
+
+We name "Pixel Art" the kind of art born in this age.
+
+Inkscape is powered by libdepixelize with the ability to automatically vectorize these "special" Pixel Art images. You can try other types of input images too, but be warned: The result won't be equally good and it is a better idea to use the other Inkscape tracer, potrace.
+
+Let's start with a sample image to show you the capabilities of this tracer engine. Below there is an example of a raster image (taken from a Liberated Pixel Cup entry) on the left and its vectorized output on the right.
+
+
+An example image
+
+libdepixelize uses Kopf-Lischinski algorithm to vectorize images. This algorithm uses ideas of several computer science techniques and math concepts to produce a good result for pixel art images. One thing to notice is that the alpha channel is completely ignored by the algorithm. libdepixelize has currently no extensions to give a first-class citizen treatment for this class of images, but all pixel art images with alpha channel support are producing results similar to the main class of images recognized by Kopf-Lischinski.
+
+
+An example image
+
+The image above has alpha channel and the result is just fine. Still, if you find a pixel art image with a bad result and you believe that the reason is the alpha channel, then contact libdepixelize maintainer (e.g. fill a bug on the project page) and he will be happy to extend the algorithm. He can't extend the algorithm if he don't know what images are giving bad results.
+
+The image below is a screenshot of Trace Pixel Art dialog in the English localisation. You can open this dialog using the Path > Trace Pixel Art... menu or right-clicking on an image object and then Trace Pixel Art.
+
+
+An example image
+
+This dialog has two sections: Heuristics and output. Heuristics is targeted at advanced uses, but there already good defaults and you shouldn't worry about that, so let's leave it for later and starting with the explanation for output.
+
+Kopf-Lischinski algorithm works (from a high-level point of view) like a compiler, converting the data among several types of representation. At each step the algorithm has the opportunity to explore the operations that this representation offers. Some of these intermediate representations have a correct visual representation (like the reshaped cell graph Voronoi output) and some don't (like the similarity graph). During development of libdepixelize users kept asking for adding the possibility of export these intermediate stages to the libdepixelize and the original libdepixelize author granted their wishes.
+
+The default output should give the smoothest result and is probably what you want. You saw already the default output on the first samples of this tutorial. If you want to try it yourself, just open the Trace Pixel Art dialog and click in OK after choosing some image on Inkscape.
+
+You can see the Voronoi output below and this is a "reshaped pixel image", where the cells (previously pixels) got reshaped to connect pixels that are part of the same feature. No curves will be created and the image continues to be composed of straight lines. The difference can be observed when you magnify the image. Previously pixels couldn't share a edge with a diagonal neighbour, even if it was meant to be part of the same feature. But now (thanks to a color similarity graph and the heuristics that you can tune to achieve a better result), it's possible to make two diagonal cells share an edge (previously only single vertices were shared by two diagonal cells).
+
+
+An example image
+
+The standard B-splines output will give you smooth results, because the previous Voronoi output will be converted to quadratic Bézier curves. However, the conversion won't be 1:1 because there are more heuristics working to decide which curves will be merged into one when the algorithm reaches a T-junction among the visible colors. A hint about the heuristics of this stage: You can't tune them.
+
+The final stage of libdepixelize (currently not exportable by the Inkscape GUI because of its experimental and incomplete state) is "optimize curves" to remove the staircasing effect of the B-Spline curves. This stage also performs a border detection technique to prevent some features from being smoothed and a triangulation technique to fix the position of the nodes after optimization. You should be able to individually disable each of these features when this output leaves the "experimental stage" in libdepixelize (hopefully soon).
+
+The heuristics section in the gui allows you to tune the heuristics used by libdepixelize to decide what to do when it encounters a 2x2 pixel block where the two diagonals have similar colors. "What connection should I keep?" is what libdepixelize asks. It tries to apply all heuristics to the conflicting diagonals and keeps the connection of the winner. If a tie happens, both connections are erased.
+
+If you want to analyze the effect of each heuristic and play with the numbers, the best output is the Voronoi output. You can see more easily the effects of the heuristics in the Voronoi output and when you are satisfied with the settings you got, you can just change the output type to the one you want.
+
+The image below has an image and the B-Splines output with only one of the heuristics turned on for each try. Pay attention to the purple circles that highlight the differences that each heuristic performs.
+
+
+An example image
+
+For the first try (top image), we only enable the curves heuristic. This heuristic tries to keep long curves connected together. You can notice that its result is similar to the last image, where the sparse pixels heuristic is applied. One difference is that its "strength" is more fair and it only gives a high value to its vote when it's really important to keep these connections. The "fair" definition/concept here is based on "human intuition" given the pixel database analysed. Another difference is that this heuristic can't decide what to do when the connections group large blocks instead of long curves (think about a chess board).
+
+For the second try (the middle image), we only enable the islands heuristic. The only thing this heuristic does is trying to keep the connection that otherwise would result in several isolated pixels (islands) with a constant weight vote. This kind of situation is not as common as the kind of situation handled by the other heuristics, but this heuristic is cool and help to give still better results.
+
+For the third try (the bottom image), we only enable the sparse pixels heuristic. This heuristic tries to keep the curves with the foreground color connected. To find out what is the foreground color the heuristic analyzes a window with the pixels around the conflicting curves. For this heuristic, you not only tune its "strength", but also the window of pixels it analyzes. But keep in mind that when you increase the window of pixels analyzed the maximum "strength" for its vote will increase too and you might want to adjust the multiplier for its vote. The original libdepixelize author think this heuristic is too greedy and likes to use the "0.25" value for its multiplier.
+
+Even if the results of the curves heuristic and the sparse pixels heuristic give similar results, you may want to leave both enabled, because the curves heuristic may give an extra safety that the important curves of contour pixels won't be hampered and there are cases that can be only answered by the sparse pixels heuristic.
+
+Hint: You can disable all heuristics by setting its multiplier/weight values to zero. You can make any heuristic act against its principles using negative values for its multiplier/weight values. Why would you ever want to replace behaviour that was created to give better quality by the opposite behaviour? Because you can... because you might want a "artistic" result... whatever... you just can.
+
+And that's it! For this initial release of libdepixelize these are all the options you got. But if the research of the original libdepixelize author and its creative mentor succeeds, you may receive extra options that broaden even yet the range of images for which libdepixelize gives a good result. Wish them luck.
+
+All images used here were taken from Liberated Pixel Cup to avoid copyright problems. The links are:
+
+    http://opengameart.org/content/memento
+
+    http://opengameart.org/content/rpg-enemies-bathroom-tiles
+

@@ -1,0 +1,25 @@
+~inkscape.dev_inkscape-docs_0.91.x : contents of tutorials_README at revision 521
+
+This is where tutorial sources are kept in DocBook format 
+(with SVG illustrations).
+
+Place each tutorial and its illustrations into a subdirectory. An example is
+basic/ with the Basic Tutorial.
+
+When converting an existing SVG tutorial, pull out the illustrations from it 
+into separate files (using copy/paste). Preserve horizontal placement (paste 
+via Ctrl+Alt+V), then vertically align the top of the illustration with the top
+of the canvas. (The size of canvas does not matter.)
+
+In the DocBook source (*.xml), the intro (italic) is in <abstract>; each 
+section is in <sect1> with <title>; each para is in <para>; keyboard shortcuts 
+are in <keycap>; menu commands are in <command>; terms when used for the first 
+time are in <firstterm> (rendered as italic). Image references are simple, 
+copy them from tutorial-basic.xml and replace just the filename.
+
+If you want to build a tutorial then you can use the scripts make-html, make-svg, and make-all. The usage instructions and requirements are in these files. 
+
+If you have Java 1.5, you may need to recompile the java class file:
+
+ cd javaclasses/org/inkscape/xslt
+ javac files.java
