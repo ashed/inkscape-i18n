@@ -362,20 +362,20 @@ inkscape:pageopacity= attribute of sodipodi:namedview).  Если не уста�
 
 =item B<-S>, B<--query-all>
 
-Prints a comma delimited listing of all objects in the SVG document with
-IDs defined, along with their x, y, width, and height values.
+Печатать разделённый запятыми список всех объектов в SVG документе 
+с  ID, определёнными по значениям их x, y, ширины, и высоты.
 
 =item B<--shell>
 
-With this parameter, Inkscape will enter an interactive command line
-shell mode. In this mode, you type in commands at the prompt and
-Inkscape executes them, without you having to run a new copy of Inkscape
-for each command. This feature is mostly useful for scripting and server
-uses: it adds no new capabilities but allows you to improve the speed
-and memory requirements of any script that repeatedly calls Inkscape to
-perform command line tasks (such as export or conversions). Each command
-in shell mode must be a complete valid Inkscape command line but without
-the Inkscape program name, for example:
+С этим параметром, Inkscape откроет режим интерактивного командного шелла. 
+В этом режиме, вы набираете команды в строке и Inkscape исполняет их, 
+без запуска новой копии Inkscape для каждой команды. Эта особенность 
+в основном для скриптинга и серверного использования: не добавляет 
+новых возможностей, но позволяет улучшить скорость и требования памяти 
+любого скрипта, который неоднократно вызывает Inkscape для выполнения 
+задач из командной строки (таких как экспорт или преобразования). Каждая 
+команда в режиме шелла должна быть полностью действительной командой 
+командной строки Inkscape, но без указания имени программы Inkscape, например:
 
     file.svg --export-pdf=file.pdf
 
