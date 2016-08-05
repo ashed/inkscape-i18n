@@ -381,43 +381,43 @@ inkscape:pageopacity= attribute of sodipodi:namedview).  Если не уста�
 
 =item B<--vacuum-defs>
 
-Remove all unused items from the <lt>defs<gt> section of the SVG file.
-If this option is invoked in conjunction with L<--export-plain-svg>,
-only the exported file will be affected.  If it is used alone, the
-specified file will be modified in place.
+Удалить все неиспользуемые пункты из <lt>defs<gt> секции SVG файла.
+Если эта опция вызывается в сочетании с L<--export-plain-svg>,
+затрагивается только экспортируемый файл.  Если используется только эта 
+опция, указанный файл будет изменен на месте.
 
 =item B<-z>, B<--without-gui>
 
-Do not open the GUI (on Unix, do not use X server); only process the
-files from console.  This is assumed for -p, -e, -l, and --vacuum-defs
-options.
+Не открывать GUI (в Unix, не использовать X сервер); только обрабатывать 
+файлы из консоли.  Это предполагается для -p, -e, -l, and --vacuum-defs
+опций.
 
 =item B<--g-fatal-warnings>
 
-This standard GTK option forces any warnings, usually harmless, to cause
-Inkscape to abort (useful for debugging).
+Это стандартная GTK опция позволяет любым предупреждениям, как правило, 
+безвредным, прерывать работу Inkscape (полезно для отладки).
 
 =item B<--usage>
 
-Display a brief usage message.
+Показать короткое сообщение об использовании.
 
 =back
 
 =head1 CONFIGURATION
 
-The main configuration file is located in
-~/.config/inkscape/preferences.xml; it stores a variety of customization
-settings that you can change in Inkscape (mostly in the Inkscape
-Preferences dialog).  Also in the subdirectories there, you can place
-your own:
+Главный конфигурационный файл размещается в
+~/.config/inkscape/preferences.xml; он хранит множество опций настройки,
+которые можно изменить в Inkscape (в основном в диалоге Inkscape
+Настройки).  Также вы можете разместить свой собственный в следующих 
+подкаталогах:
 
-B<$HOME>/.config/inkscape/extensions/ - extension effects.
+B<$HOME>/.config/inkscape/extensions/ - расширения эффектов.
 
-B<$HOME>/.config/inkscape/icons/ - icons.
+B<$HOME>/.config/inkscape/icons/ - значки.
 
-B<$HOME>/.config/inkscape/keys/ - keyboard maps.
+B<$HOME>/.config/inkscape/keys/ - раскладки клавиш.
 
-B<$HOME>/.config/inkscape/templates/ - new file templates.
+B<$HOME>/.config/inkscape/templates/ - шаблоны новых файлов.
 
 =head1 DIAGNOSTICS
 
