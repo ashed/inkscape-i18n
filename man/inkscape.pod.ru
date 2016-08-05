@@ -421,66 +421,64 @@ B<$HOME>/.config/inkscape/templates/ - шаблоны новых файлов.
 
 =head1 DIAGNOSTICS
 
-The program returns zero on success or non-zero on failure.
+Программа вернёт zero при успехе или non-zero при ошибке.
 
-A variety of error messages and warnings may be printed to STDERR or
-STDOUT.  If the program behaves erratically with a particular SVG file
-or crashes, it is useful to look at this output for clues.
+Множество сообщений об ошибках и предупреждения могут быть напечатаны в 
+STDERR или STDOUT.  Если программа ведет себя хаотично или аварийно 
+с конкретным файлом SVG, полезно взглянуть на этот вывод для подсказки.
 
 =head1 EXAMPLES
 
-While obviously B<Inkscape> is primarily intended as a GUI application,
-it can be used for doing SVG processing on the command line as well.
+В то время как очевидно B<Inkscape> в первую очередь приложение с GUI,
+но также возможно и редактирование SVG в командной строке.
 
-Open an SVG file in the GUI:
+Открыть SVG файл в GUI:
 
     inkscape filename.svg
 
-Print an SVG file from the command line:
+Напечатать SVG файл из командной строки:
 
     inkscape filename.svg -p '| lpr'
 
-Export an SVG file into PNG with the default resolution of 96 dpi (one
-SVG user unit translates to one bitmap pixel):
+Экспорт SVG файла в PNG с умолчальным разрешением 96 dpi (один 
+пользовательский SVG юнит транслируется в один битмпап пиксел):
 
     inkscape filename.svg --export-png=filename.png
 
-Same, but force the PNG file to be 600x400 pixels:
+То же, но форсировать PNG файл в 600x400 пикселов:
 
     inkscape filename.svg --export-png=filename.png -w600 -h400
 
-Same, but export the drawing (bounding box of all objects), not the
-page:
+То же, но экспортировать рисунок (bounding box всех объектов), не страницы:
 
     inkscape filename.svg --export-png=filename.png --export-area-drawing
 
-Export to PNG the object with id="text1555", using the output filename
-and the resolution that were used for that object last time when it was
-exported from the GUI:
+Экспорт в PNG объекта с id="text1555", с именем и разрешением для этого 
+объекта при последнем экспорте его из GUI:
 
     inkscape filename.svg --export-id=text1555 --export-use-hints
 
-Same, but use the default 96 dpi resolution, specify the filename, and
-snap the exported area outwards to the nearest whole SVG user unit
-values (to preserve pixel-alignment of objects and thus minimize
-aliasing):
+То же, но использовать умолчальное разрешение 96 dpi, указать имя файла, 
+и подтянуть область экспорта кнаружи до ближайших целых значений 
+SVG юнитов (px) (для попиксельного выравнивания графики и минимизации 
+сглаживания):
 
     inkscape filename.svg --export-id=text1555 --export-png=text.png --export-area-snap
 
-Convert an Inkscape SVG document to plain SVG:
+Конвертировать Inkscape SVG документ в plain SVG:
 
     inkscape filename1.svg --export-plain-svg=filename2.svg
 
-Convert an SVG document to EPS, converting all texts to paths:
+Конвертировать SVG документ в EPS, конвертировав весь текст в кривые:
 
     inkscape filename.svg --export-eps=filename.eps --export-text-to-path
 
-Query the width of the object with id="text1555":
+Запрос ширины объекта с id="text1555":
 
     inkscape filename.svg --query-width --query-id text1555
 
-Duplicate the object with id="path1555", rotate the duplicate 90
-degrees, save SVG, and quit:
+Дублировать объект с id="path1555", повернуть дубликат на 90 degrees, 
+сохранить SVG и выйти:
 
     inkscape filename.svg --select=path1555 --verb=EditDuplicate --verb=ObjectRotate90 --verb=FileSave --verb=FileClose
 
