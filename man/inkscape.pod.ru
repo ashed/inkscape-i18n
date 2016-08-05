@@ -477,7 +477,7 @@ SVG юнитов (px) (для попиксельного выравнивани�
 
     inkscape filename.svg --query-width --query-id text1555
 
-Дублировать объект с id="path1555", повернуть дубликат на 90 degrees, 
+Дублировать объект с id="path1555", повернуть дубликат на 90 градусов, 
 сохранить SVG и выйти:
 
     inkscape filename.svg --select=path1555 --verb=EditDuplicate --verb=ObjectRotate90 --verb=FileSave --verb=FileClose
@@ -485,34 +485,33 @@ SVG юнитов (px) (для попиксельного выравнивани�
 
 =head1 ENVIRONMENT
 
-B<DISPLAY> to get the default host and display number.
+B<DISPLAY> чтобы получить умолчальный хост и номер дисплея.
 
-B<TMPDIR> to set the default path of the directory to use for temporary
-files.  The directory must exist.
+B<TMPDIR> для установки умолчального пути каталога временных файлов.  
+Каталог должен существовать.
 
-B<INKSCAPE_PROFILE_DIR> to set the path of the directory to use for the
-user profile.
+B<INKSCAPE_PROFILE_DIR> для установки пути каталога пользовательского профиля.
 
 =head1 THEMES
 
-To load different icons sets instead of the default
-B<${CMAKE_INSTALL_PREFIX}/${SHARE_INSTALL}>/inkscape/icons/icons.svg file, the directory
-B<$HOME>/.config/inkscape/icons/ is used.  Icons are loaded by name
-(e.g. I<fill_none.svg>), or if not found, then from I<icons.svg>.  If
-the icon is not loaded from either of those locations, it falls back to
-the default system location.
+Для загрузки различных наборов значков вместо умолчального
+B<${CMAKE_INSTALL_PREFIX}/${SHARE_INSTALL}>/inkscape/icons/icons.svg файл, 
+каталог B<$HOME>/.config/inkscape/icons/ используется.  Значки загружаются 
+по имени (например I<fill_none.svg>), или если не найдены, из I<icons.svg>.  
+Если значок не загружается из любого из этих мест, он загружается из
+умолчального местоположения.
 
-The needed icons are loaded from SVG files by searching for the SVG id
-with the matching icon name.  (For example, to load the "fill_none" icon
-from a file, the bounding box seen for SVG id "fill_none" is rendered as
-the icon, whether it comes from I<fill_none.svg> or I<icons.svg>.)
+Необходимые значки загружаются из SVG файлов поиском SVG id, совпадающим 
+с именем значка.  (К примеру, для загрузки значка "fill_none" из файла, 
+bounding box показывается для SVG id "fill_none", который рендерится как
+значок, если он происходит из I<fill_none.svg> или I<icons.svg>.)
 
 =head1 OTHER INFO
 
-The canonical place to find B<Inkscape> info is at
-L<http://www.inkscape.org/>.  The website has news, documentation,
-tutorials, examples, mailing list archives, the latest released version
-of the program, bugs and feature requests databases, forums, and more.
+Каночничное место для нахождения B<Inkscape> info это
+L<http://www.inkscape.org/>.  На веб-сайте есть новости, документация,
+учебники, примеры, архивы почтовой рассылки, последние релизы программы, 
+базы данных ошибок и запросов особенностей, форумы, и прочее.
 
 =head1 SEE ALSO
 
