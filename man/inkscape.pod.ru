@@ -336,29 +336,29 @@ inkscape:pageopacity= attribute of sodipodi:namedview).  Если не уста�
 
 =item B<-I>, B<--query-id>
 
-Set the ID of the object whose dimensions are queried. If not set, query
-options will return the dimensions of the drawing (i.e. all document
-objects), not the page or viewbox
+Установить ID объекта, чьи размеры запрошены. Если не установлено, 
+опции запроса вернут размеры рисунка (т.е. все объекты документа), 
+а не страницу или viewbox.
 
 =item B<-X>, B<--query-x>
 
-Query the X coordinate of the drawing or, if specified, of the object
-with L<--query-id>. The returned value is in px (SVG user units).
+Запрос X координаты рисунка или, если указано, объекта
+с опцией L<--query-id>. Возвращаемое значение в px (SVG user units).
 
 =item B<-Y>, B<--query-y>
 
-Query the Y coordinate of the drawing or, if specified, of the object
-with L<--query-id>. The returned value is in px (SVG user units).
+Запрос the Y координаты рисунка или, если указано, объекта
+с опцией L<--query-id>. Возвращаемое значение в px (SVG user units).
 
 =item B<-W>, B<--query-width>
 
-Query the width of the drawing or, if specified, of the object with
-L<--query-id>. The returned value is in px (SVG user units).
+Запрос ширины рисунка или, если указано, объекта с опцией L<--query-id>. 
+Возвращаемое значение в px (SVG user units).
 
 =item B<-H>, B<--query-height>
 
-Query the height of the drawing or, if specified, of the object
-with L<--query-id>. The returned value is in px (SVG user units).
+Запрос высоты рисунка или, если указано, объекта с опцией L<--query-id>. 
+Возвращаемое значение в px (SVG user units).
 
 =item B<-S>, B<--query-all>
 
